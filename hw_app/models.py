@@ -16,8 +16,17 @@ class Customer(models.Model):
         return f'{self.first_name} {self.last_name}'
 
 
+class CategoryProduct(models.Model):
+    category_name = models.CharField(max_length=32)
+    category_description = models.TextField()
+
+    def __str__(self):
+        return self.category_name
+
+
 class Product(models.Model):
     title = models.CharField(max_length=100)
+    category = models.ForeignKey(CategoryProduct, on_delete=models.CASCADE)
     description = models.TextField()
     price = models.DecimalField(max_digits=8, decimal_places=2)
     count = models.IntegerField(default=0)
