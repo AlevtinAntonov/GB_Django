@@ -38,7 +38,7 @@ class Product(models.Model):
     objects = models.Manager()
 
     def get_absolute_url(self):
-        return reverse('hw_4_app:product_page', kwargs={'pk': self.pk})
+        return reverse('hw_app:product_page', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.title

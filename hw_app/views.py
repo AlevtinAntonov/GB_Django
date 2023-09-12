@@ -22,7 +22,7 @@ def about(request):
 
 class CustomerView(DetailView):
     model = models.Customer
-    template_name = 'hw_4_app/customer_page.html'
+    template_name = 'hw_app/customer_page.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -33,7 +33,7 @@ class CustomerView(DetailView):
 class AllProducts(ArchiveIndexView):
     model = models.Order
     date_field = 'ordered_at'
-    template_name = 'hw_4_app/all_products.html'
+    template_name = 'hw_app/all_products.html'
     allow_future = False
     week_format = '%U'
     year_format = '%Y'
@@ -57,10 +57,10 @@ class AllProducts(ArchiveIndexView):
 
 class UpdateProductView(UpdateView):
     model = models.Product
-    template_name = 'hw_4_app/update_product.html'
+    template_name = 'hw_app/update_product.html'
     form_class = forms.ProductUpdateForm
 
 
 class ProductView(DetailView):
     model = models.Product
-    template_name = 'hw_4_app/product_page.html'
+    template_name = 'hw_app/product_page.html'
