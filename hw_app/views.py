@@ -3,7 +3,7 @@ from datetime import datetime
 
 from django.http import HttpResponse
 from django.views.generic import DetailView, UpdateView
-from django.views.generic.dates import ArchiveIndexView
+from django.views.generic.dates import MonthArchiveView, WeekArchiveView, ArchiveIndexView, YearArchiveView
 
 from hw_app import models, forms
 
@@ -11,12 +11,12 @@ logger = logging.getLogger(__name__)
 
 
 def index(request):
-    logger.info('Index page accessed')
+    # logger.info('Index page accessed')
     return HttpResponse('<h1>Главная страница!</h1>')
 
 
 def about(request):
-    logger.info('About page accessed')
+    # logger.info('About page accessed')
     return HttpResponse('<h1>Страница обо мне.</h1>')
 
 
@@ -53,6 +53,18 @@ class AllProducts(ArchiveIndexView):
         orders = models.Order.objects.get_queryset().filter(customer=self.kwargs.get('pk'))
 
         return orders
+
+
+class AllYearProducts(AllProducts, YearArchiveView):
+    pass
+
+
+class AllMonthProducts(AllProducts, MonthArchiveView):
+    pass
+
+
+class AllWeekProducts(AllProducts, WeekArchiveView):
+    pass
 
 
 class UpdateProductView(UpdateView):

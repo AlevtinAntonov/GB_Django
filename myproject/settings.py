@@ -43,8 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'hw_app',
+    'hw_app.apps.HwAppConfig',
     'myapp6',
+    'seminar_app.apps.SeminarAppConfig',
     'debug_toolbar',
 
 ]
